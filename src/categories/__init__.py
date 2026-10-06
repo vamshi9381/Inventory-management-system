@@ -77,7 +77,7 @@ def get_categories():
             return
 
         print("\n========================================")
-        print("            ALL CATEGORIES")
+        print("              CATEGORIES")
         print("========================================")
 
         for category in categories:
@@ -132,10 +132,6 @@ def search_category(category_name):
 
             return
 
-        print("\n========================================")
-        print("           SEARCH RESULTS")
-        print("========================================")
-
         for category in categories:
 
             print(
@@ -165,7 +161,9 @@ def update_category(category_id):
 
         cursor = connection.cursor()
 
-        # Get existing category
+        # ----------------------------------------------------
+        # GET EXISTING CATEGORY
+        # ----------------------------------------------------
 
         query = """
             SELECT
@@ -191,7 +189,9 @@ def update_category(category_id):
         old_name = category[0]
         old_description = category[1]
 
-        # Show current values
+        # ----------------------------------------------------
+        # SHOW CURRENT VALUES
+        # ----------------------------------------------------
 
         print("\n========================================")
         print("        CURRENT CATEGORY DETAILS")
@@ -205,10 +205,11 @@ def update_category(category_id):
             f"Description   : {old_description}"
         )
 
-        print("\nPress ENTER to keep the existing value.")
-        print()
+        print("\nPress ENTER to keep the existing value.\n")
 
-        # Category name
+        # ----------------------------------------------------
+        # NEW NAME
+        # ----------------------------------------------------
 
         name_input = input(
             f"Category name [{old_name}]: "
@@ -219,7 +220,9 @@ def update_category(category_id):
         else:
             category_name = name_input
 
-        # Description
+        # ----------------------------------------------------
+        # NEW DESCRIPTION
+        # ----------------------------------------------------
 
         description_input = input(
             f"Description [{old_description}]: "
@@ -230,7 +233,9 @@ def update_category(category_id):
         else:
             description = description_input
 
-        # Update
+        # ----------------------------------------------------
+        # UPDATE
+        # ----------------------------------------------------
 
         update_query = """
             UPDATE categories
